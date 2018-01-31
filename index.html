@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Social Vault</title>
+
+  <!-- Tell IE to display content in the highest document compatibility mode available. Keep this high in <head> to avoid a potential performance hit if IE needs to switch version engines. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Specify preferred version of web page for SEO -->
+  <link rel="canonical" href="https://socialvault.io">
+
+  <!-- Optimize site for mobile by modifying width and zoom-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Route linked assets magically through "public/" using express.static middleware -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Support all browsers with this exact format, including good ol' IE -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Social Vault">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+
+  <!-- Support Windows 8 -->
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+
+<body>
+  <header class="header">
+    <!-- h1 is populated dynamically from app.js based on current page -->
+    <h1 class="header__title"></h1>
+    <button class="header__add" aria-label="Add Button">Add</button>
+    <button class="header__back" aria-label="Back Button" hidden>Back</button>
+  </header>
+
+  <!-- Dynamically populated from app.js with groups, people, or details -->
+  <ul class="list-container"></ul>
+  <script src="app.js" async></script>
+</body>
+
+</html>
