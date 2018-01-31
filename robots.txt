@@ -1,0 +1,5 @@
+# robots.txt for www.socialvault.io/
+
+# Allow crawling of all content
+User-agent: *
+Disallow:
