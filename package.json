@@ -1,0 +1,37 @@
+{
+  "name": "social-vault",
+  "version": "0.1.0",
+  "description": "An offline-enabled web app that helps you remember people",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganorberg/social-vault.git"
+  },
+  "keywords": [
+    "offline",
+    "PWA",
+    "progressive web app",
+    "service worker",
+    "single page application",
+    "social memory",
+    "social network",
+    "social remember",
+    "social storage",
+    "SPA",
+    "remember names",
+    "remember people"
+  ],
+  "author": "George Norberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ganorberg/social-vault/issues"
+  },
+  "homepage": "https://github.com/ganorberg/social-vault#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "serve-favicon": "^2.4.5"
+  }
+}
