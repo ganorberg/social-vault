@@ -1,9 +1,3 @@
-/* <header class="header">
-<!-- h1 is populated dynamically from app.js based on current page -->
-<h1 class="header__title"></h1>
-<button class="header__add" aria-label="Add Button">Add</button>
-<button class="header__back" aria-label="Back Button" hidden>Back</button>
-</header> */
 html {
   box-sizing: border-box;
   font-size: 16;
