@@ -1,17 +1,27 @@
 :root {
-  --standard-margin: 3%;
   --bright-blue: #0095FF;
+  --header-icon-size: 3em;
   --light-gray: #E2DFDF;
+  --standard-margin: 3%;
+  --white: #fff;
 }
 
 html {
   box-sizing: border-box;
   font-size: 24px;
 }
-
 body {
   margin: 0;
   padding: 0;
+}
+button {
+  border: none;
+}
+button:focus {
+  outline: none;
+}
+h1, p {
+  word-break: break-word;
 }
 
 .card {
@@ -29,29 +39,33 @@ body {
   justify-content: space-between;
 }
 .header__add {
+  background-color: var(--bright-blue);
+  color: var(--white);
+  font-size: var(--header-icon-size);
   margin-right: var(--standard-margin);
 }
 .header__back {
+  background-color: var(--bright-blue);
+  color: var(--white);
+  font-size: var(--header-icon-size);
   margin-left: var(--standard-margin);
+  /* Hack to remove title's left margin when it's in middle. Avoids conditionals. */
+  margin-right: calc(-1 * var(--standard-margin));
 }
 .header__title {
-  color: white;
+  color: var(--white);
   margin-left: var(--standard-margin);
 }
 
 .item__remove {
-  border: none;
   margin-right: var(--standard-margin);
 }
+/* TODO: put directly in HTML */
 .item__remove::before {
   color: #E2DFDF;
   content: "\00d7";
-  font-size: 4em;
+  font-size: 5em;
 }
-.item__remove:focus {
-  outline: none;
-}
-/* IMPORTANT TODO: wrap long text */
 .item__text {
   margin-left: var(--standard-margin);
 }
