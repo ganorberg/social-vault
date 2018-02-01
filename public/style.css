@@ -1,26 +1,62 @@
+:root {
+  --standard-margin: 3%;
+  --bright-blue: #0095FF;
+  --light-gray: #E2DFDF;
+}
+
 html {
   box-sizing: border-box;
-  font-size: 16;
+  font-size: 24px;
+}
+
+body {
   margin: 0;
   padding: 0;
 }
 
-.header {
-  background-color: #0095FF;
+.card {
+  border-bottom: 1px solid var(--light-gray);
   display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: var(--standard-margin) 0;
 }
 
+.header {
+  background-color: var(--bright-blue);
+  box-shadow: 0 1px 10px black;
+  display: flex;
+  justify-content: space-between;
+}
 .header__add {
-  flex: 1;
+  margin-right: var(--standard-margin);
 }
-
 .header__back {
-  flex: 1;
+  margin-left: var(--standard-margin);
 }
-
 .header__title {
   color: white;
-  flex: 1;
+  margin-left: var(--standard-margin);
 }
 
-/* color of lines separating items: E2DFDF */
+.item__remove {
+  border: none;
+  margin-right: var(--standard-margin);
+}
+.item__remove::before {
+  color: #E2DFDF;
+  content: "\00d7";
+  font-size: 4em;
+}
+.item__remove:focus {
+  outline: none;
+}
+/* IMPORTANT TODO: wrap long text */
+.item__text {
+  margin-left: var(--standard-margin);
+}
+
+.list-container {
+  margin-left: 0;
+  padding-left: 0;
+}
