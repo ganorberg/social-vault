@@ -1,4 +1,5 @@
-const CACHE_NAME = 'Social-Vault-v1';
+const VERSION = 1;
+const CACHE_NAME = `Social-Vault-v${VERSION}`;
 const filesToCache = [
   '/',
   '/app.js',
