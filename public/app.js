@@ -48,10 +48,7 @@
     let html = "";
 
     items.forEach(item => html +=
-      `<li class="card">
-      ${escapeHtml(item)}
-      <button class="item__remove" aria-label="Remove Button">Remove</button>
-    </li>`);
+      `<li class="card"><p class="item__text">${item}</p><button class="item__remove" aria-label="Remove Button"></button></li>`);
 
     el.listContainer.innerHTML = html;
   }
@@ -63,7 +60,7 @@
   }
 
   function renderHeader() {
-    el.headerTitle.textContent = escapeHtml(state.page.title);
+    el.headerTitle.textContent = state.page.title;
   }
 
   function render() {
@@ -110,12 +107,12 @@
     // Bubbling tradeoff: extra conditional statement vs listeners on every li 
     // plus extra buttons alongside additional handler functions
     if (e.target.className === "item__remove") {
-      removeItem(e.target.previousSibling.nodeValue.trim());
+      removeItem(e.target.previousSibling.textContent);
       return;
     }
 
     // Grab text from li only, thereby excluding button text
-    const itemText = e.target.firstChild.nodeValue.trim();
+    const itemText = e.target.firstChild.textContent;
 
     switch (state.page.type) {
       case GROUP: navigateToGroup(itemText); break;
@@ -297,7 +294,6 @@
    *
    ****************************************************************************/
 
-
   // TODO: detect if private browsing incognito mode to alert user they cannot
   // store data.
 
@@ -310,7 +306,6 @@
     });
   }
 
-
   // Called when data is received from IndexedDB
   function initialize() {
     window.history.replaceState(state, null, "");
@@ -318,18 +313,3 @@
     // TODO: tell users without JS enabled that JS is required
   };
 })();
-
-/*****************************************************************************
- *
- * Utility
- *
- ****************************************************************************/
-
-function escapeHtml(unsafe) {
-  return unsafe
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
