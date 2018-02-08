@@ -101,7 +101,7 @@
     addItem(info);
   }
 
-  const handleBackClick = () => window.history.back();
+  const handleBackClick = window.history.back;
 
   const handleItemClick = (e) => {
     // Bubbling tradeoff: extra conditional statement vs listeners on every li 
