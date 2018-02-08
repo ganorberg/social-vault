@@ -5,8 +5,8 @@ const favicon = require("serve-favicon");
 
 const PORT = 3000;
 
-app.use(favicon(__dirname + "/public/favicon.ico"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(favicon(__dirname + "/favicon.ico"));
+app.use(express.static(path.join(__dirname, "")));
 
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 

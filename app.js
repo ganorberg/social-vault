@@ -37,6 +37,9 @@
     listContainer: document.querySelector(".list-container"),
   };
 
+  // Stores "add to homescreen" prompt until user activates it by clicking back
+  let deferredPrompt;
+
   /*****************************************************************************
    *
    * View
@@ -101,8 +104,7 @@
     addItem(info);
   }
 
-  const handleBackClick = window.history.back;
-
+  const handleBackClick = (_) => window.history.back();
   const handleItemClick = (e) => {
     // Bubbling tradeoff: extra conditional statement vs listeners on every li 
     // plus extra buttons alongside additional handler functions
@@ -124,14 +126,40 @@
     render();
   }
 
+  // Experimental
+  function handleHomescreenPrompt(event) {
+    if (!deferredPrompt) { return; }
+
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choiceResult => {
+      choiceResult.outcome === 'dismissed'
+        ? console.log('User cancelled home screen install')
+        : console.log('User added to home screen');
+
+      // We no longer need the prompt
+      deferredPrompt = null;
+    });
+  }
+
   el.addButton.addEventListener("click", handleAddClick);
   el.backButton.addEventListener("click", handleBackClick);
+  el.backButton.addEventListener("click", handleHomescreenPrompt);
   el.listContainer.addEventListener("click", handleItemClick);
 
   // Restores previous state when user backs through History API
   window.onpopstate = function (event) {
     if (event.state) { state = event.state; }
     render();
+  };
+
+  // Experimental. Should trigger on mobile to store Add to Homescreen prompt.
+  window.onbeforeinstallprompt = function (event) {
+    console.log('beforeinstallprompt Event fired');
+    event.preventDefault();
+
+    // Stash the event so it can be triggered later.
+    deferredPrompt = event;
+    return false;
   };
 
   /*****************************************************************************
@@ -220,23 +248,8 @@
    ****************************************************************************/
 
   if (!window.indexedDB) {
-    window.alert("Your browser doesn't support the latest data storage technology and may not be secure. Please update your browser to enable all of this app's features.");
     // TODO: dodge indexedDB code below and use localStorage methods
   }
-
-  // const dummyData = {
-  //   "Partner’s Family": {
-  //     Jimmy: ["Son applying to Yale", "Moving to Texas in August"],
-  //     Jack: ["Loves football", "Visiting Miami for JETS-Dolphin game"],
-  //     John: ["Loves escape rooms and karaoke"]
-  //   },
-  //   Gym: {
-  //     Patricia: ["Going to Puerto Rico for Christmas"]
-  //   },
-  //   Dentist: {
-  //     Jessica: ["Daughter got into honors Science 10th grade"]
-  //   }
-  // };
 
   const DB_NAME = 'social-vault-db';
   const DB_STORE = 'groups';
@@ -248,20 +261,20 @@
 
   openRequest.onupgradeneeded = function (e) {
     database = e.target.result;
-    console.log('running onupgradeneeded');
+    console.log('IndexedDB running onupgradeneeded');
     if (!database.objectStoreNames.contains(DB_STORE)) {
       database.createObjectStore(DB_STORE);
     }
   };
 
   openRequest.onsuccess = function (e) {
-    console.log('running onsuccess');
+    console.log('IndexedDB running onsuccess');
     database = e.target.result;
     getModel();
   };
 
   openRequest.onerror = function (e) {
-    console.log('onerror!');
+    console.error('IndexedDB running onerror!');
     console.dir(e);
   };
 
@@ -310,6 +323,5 @@
   function initialize() {
     window.history.replaceState(state, null, "");
     render();
-    // TODO: tell users without JS enabled that JS is required
   };
 })();
