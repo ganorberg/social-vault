@@ -14,7 +14,6 @@
   <!-- Optimize site for mobile by modifying width and zoom-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Route linked assets magically through "public/" using express.static middleware -->
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="manifest" href="manifest.json">
 
@@ -42,7 +41,11 @@
 
   <!-- Dynamically populated from app.js with groups, people, or details -->
   <ul class="list-container"></ul>
+
   <script src="app.js" async></script>
+  <noscript>
+    <p>Please enable JavaScript to use this dynamic web application.</p>
+  </noscript>
 </body>
 
 </html>
