@@ -51,7 +51,7 @@
     let html = "";
 
     items.forEach(item => html +=
-      `<li class="card"><p class="item__text">${item}</p><button class="item__remove" aria-label="Remove Button">&times;</button></li>`);
+      `<li class="card"><p class="item__text">${item}</p><button class="item__remove icon" aria-label="Remove Button">&times;</button></li>`);
 
     el.listContainer.innerHTML = html;
   }
@@ -108,7 +108,7 @@
   const handleItemClick = (e) => {
     // Bubbling tradeoff: extra conditional statement vs listeners on every li 
     // plus extra buttons alongside additional handler functions
-    if (e.target.className === "item__remove") {
+    if (e.target.className.includes("item__remove")) {
       removeItem(e.target.previousSibling.textContent);
       return;
     }
