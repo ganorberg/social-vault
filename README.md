@@ -1,6 +1,6 @@
 # Social Vault
 
-Use this app to remember acquaintances -- names, details of their first born, you name it.
+Use this app to remember acquaintances -- names, aspirations, hobbies, and so on for your next conversation. Guaranteed to impress or horrify, depending on your level of detail.
 
 https://ganorberg.github.io/social-vault/
 
