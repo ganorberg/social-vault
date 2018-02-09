@@ -1,10 +1,11 @@
 const VERSION = 1;
 const CACHE_NAME = `Social-Vault-v${VERSION}`;
+const temporaryGithubPath = "/social-vault";
 const filesToCache = [
-  '/',
-  '/app.js',
-  '/style.css',
-  '/favicon.ico'
+  temporaryGithubPath + '/',
+  temporaryGithubPath + '/app.js',
+  temporaryGithubPath + '/style.css',
+  temporaryGithubPath + '/favicon.ico'
 ];
 
 /* 
