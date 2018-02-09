@@ -1,9 +1,8 @@
 :root {
   --bright-blue: #0095FF;
-  --header-icon-size: 3em;
+  --icon-size: 3em;
   --light-gray: #E2DFDF;
-  --standard-margin: 0.6em;
-  --standard-right-margin: 0.35em;
+  --right-margin: 0.35em;
   --white: #fff;
 }
 
@@ -48,26 +47,27 @@ h1 {
 .header__add {
   background-color: var(--bright-blue);
   color: var(--white);
-  font-size: var(--header-icon-size);
-  margin-right: var(--standard-right-margin);
+  margin-right: var(--right-margin);
 }
 .header__back {
   background-color: var(--bright-blue);
   color: var(--white);
-  font-size: var(--header-icon-size);
-  margin-left: 0.3em;
-  margin-top: -0.2em;
+  margin: -0.2em -0.3em 0 0.3em;
 }
 .header__title {
   color: var(--white);
-  margin: var(--standard-margin);
+  margin: 0.6em;
   text-align: center;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: var(--icon-size);
 }
 
 .item__remove {
   color: #E2DFDF;
-  font-size: var(--header-icon-size);
-  margin-right: var(--standard-right-margin);
+  margin-right: var(--right-margin);
 }
 .item__text {
   margin: 1.2em;
