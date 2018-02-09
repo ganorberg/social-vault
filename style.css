@@ -2,26 +2,30 @@
   --bright-blue: #0095FF;
   --header-icon-size: 3em;
   --light-gray: #E2DFDF;
-  --standard-margin: 3%;
+  --standard-margin: 0.6em;
+  --standard-right-margin: 0.35em;
   --white: #fff;
 }
 
-html {
+* {
   box-sizing: border-box;
-  font-size: 24px;
-}
-body {
+  font-family: "proxima-nova", Arial, Helvetica, sans-serif;
+  font-size: 16px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 button {
   border: none;
+
+  /* make default button background transparent instead of white */
+  background: rgba(0, 0, 0, 0);
 }
 button:focus {
   outline: none;
 }
-h1, p {
-  word-break: break-word;
+h1 {
+  font-size: 2em;
 }
 
 .card {
@@ -29,7 +33,10 @@ h1, p {
   display: flex;
   justify-content: space-between;
   list-style: none;
-  margin: var(--standard-margin) 0;
+}
+.card:first-child {
+  /* move first card down so text looks centered under header shadow */
+  margin-top: 3px;
 }
 
 .header {
@@ -42,35 +49,26 @@ h1, p {
   background-color: var(--bright-blue);
   color: var(--white);
   font-size: var(--header-icon-size);
-  margin-right: var(--standard-margin);
+  margin-right: var(--standard-right-margin);
 }
 .header__back {
   background-color: var(--bright-blue);
   color: var(--white);
   font-size: var(--header-icon-size);
-  margin-left: var(--standard-margin);
-  /* Hack to remove title's left margin when it's in middle. Avoids conditionals. */
-  margin-right: calc(-1 * var(--standard-margin));
+  margin-left: 0.3em;
+  margin-top: -0.2em;
 }
 .header__title {
   color: var(--white);
-  margin-left: var(--standard-margin);
+  margin: var(--standard-margin);
+  text-align: center;
 }
 
 .item__remove {
-  margin-right: var(--standard-margin);
-}
-/* TODO: put directly in HTML */
-.item__remove::before {
   color: #E2DFDF;
-  content: "\00d7";
-  font-size: 5em;
+  font-size: var(--header-icon-size);
+  margin-right: var(--standard-right-margin);
 }
 .item__text {
-  margin-left: var(--standard-margin);
-}
-
-.list-container {
-  margin-left: 0;
-  padding-left: 0;
+  margin: 1.2em;
 }
