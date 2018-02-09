@@ -52,7 +52,7 @@ h1 {
 .header__back {
   background-color: var(--bright-blue);
   color: var(--white);
-  margin: -0.2em -0.3em 0 0.3em;
+  margin: -0.1em -0.3em 0 0.3em;
 }
 .header__title {
   color: var(--white);
