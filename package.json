@@ -1,10 +1,10 @@
 {
   "name": "social-vault",
   "version": "0.1.0",
-  "description": "An offline-enabled web app that helps you remember people",
+  "description": "Offline-enabled web app to remember acquaintances",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node dev-server.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,8 @@
   "bugs": {
     "url": "https://github.com/ganorberg/social-vault/issues"
   },
-  "homepage": "https://github.com/ganorberg/social-vault#readme",
-  "dependencies": {
+  "homepage": "https://ganorberg.github.io/social-vault/",
+  "devDependencies": {
     "express": "^4.16.2",
     "serve-favicon": "^2.4.5"
   }
