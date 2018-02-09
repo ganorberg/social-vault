@@ -1,9 +1,9 @@
 # Social Vault
 
-I use this app to help me remember names/conversations I have with acquaintances -- super helpful when meeting your partner's extended family, for example.
+Use this app to remember acquaintances -- names, details of their first born, you name it.
 
 ## Design document
-11 pages of planning and pretty pictures: https://docs.google.com/document/d/1KPhkx54ixJjvgGrxv5iiGGpRitm2Qa2pwWfh_alV58g/edit?usp=sharing
+Planning and pretty pictures: https://docs.google.com/document/d/1KPhkx54ixJjvgGrxv5iiGGpRitm2Qa2pwWfh_alV58g/edit?usp=sharing
 
 ## Logo
 <p align="center">
