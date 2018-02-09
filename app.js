@@ -51,7 +51,7 @@
     let html = "";
 
     items.forEach(item => html +=
-      `<li class="card"><p class="item__text">${item}</p><button class="item__remove" aria-label="Remove Button"></button></li>`);
+      `<li class="card"><p class="item__text">${item}</p><button class="item__remove" aria-label="Remove Button">&times;</button></li>`);
 
     el.listContainer.innerHTML = html;
   }
@@ -246,10 +246,6 @@
    * Model
    *
    ****************************************************************************/
-
-  if (!window.indexedDB) {
-    // TODO: dodge indexedDB code below and use localStorage methods
-  }
 
   const DB_NAME = 'social-vault-db';
   const DB_STORE = 'groups';
