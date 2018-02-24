@@ -304,20 +304,17 @@
 
   openRequest.onupgradeneeded = function (e) {
     database = e.target.result;
-    console.log('IndexedDB running onupgradeneeded');
     if (!database.objectStoreNames.contains(DB_STORE)) {
       database.createObjectStore(DB_STORE);
     }
   };
 
   openRequest.onsuccess = function (e) {
-    console.log('IndexedDB running onsuccess');
     database = e.target.result;
     getModel();
   };
 
   openRequest.onerror = function (e) {
-    console.error('IndexedDB running onerror!');
     console.dir(e);
   };
 
@@ -328,7 +325,7 @@
     const store = transaction.objectStore(DB_STORE);
     const putRequest = store.put(data, DB_OBJECT_KEY);
 
-    putRequest.onerror = (e) => console.log('Error', e.target.error.name);
+    putRequest.onerror = (e) => console.error('Error', e.target.error.name);
     putRequest.onsuccess = (e) => console.log('Woot! Put successsssss');
   }
 
