@@ -23,8 +23,8 @@ button {
 button:focus {
   outline: none;
 }
-h1 {
-  font-size: 2em;
+input:focus {
+  outline: none;
 }
 
 .card {
@@ -36,6 +36,66 @@ h1 {
 .card:first-child {
   /* move first card down so text looks centered under header shadow */
   margin-top: 3px;
+}
+
+.dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.dialog__buttons {
+  float: right;
+}
+.dialog__close-button {
+  color: var(--bright-blue);
+  cursor: pointer;
+  padding: 0.8em;
+}
+.dialog__close-button:hover {
+  background-color: var(--light-gray);
+}
+.dialog__confirm-input-button {
+  color: var(--bright-blue);
+  cursor: pointer;
+  margin-right: -0.8em;
+  padding: 0.8em;
+}
+.dialog__confirm-input-button:hover {
+  background-color: var(--light-gray);
+}
+.dialog__content {
+  background-color: white;
+  border-radius: 0.5rem;
+  left: 50%;
+  position: absolute;
+  padding: 1rem 1.5rem;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  width: 24rem;
+}
+.dialog__input {
+  border-color: var(--light-gray);
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  margin: 1.5em 0;
+  width: 100%;
+}
+.dialog__title {
+  font-size: 1.5em;
+  margin-top: 0.5em;
+}
+.dialog--show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .header {
@@ -56,6 +116,7 @@ h1 {
 }
 .header__title {
   color: var(--white);
+  font-size: 2em;
   margin: 0.6em;
   text-align: center;
 }

@@ -12,7 +12,7 @@
   const PERSON = "person";
   const DETAIL = "detail";
 
-  // IndexedDB instantiated in Model
+  // IndexedDB instantiated in Model then sets data variable
   let database;
 
   // Data flow: user event -> data mutation -> re-render + IndexedDB update
@@ -21,7 +21,7 @@
   // Data flow: user event -> state mutation -> re-render
   let state = {
     displayBackButton: false,
-    isLoading: true,
+    displayDialog: false,
     page: {
       selectedGroup: "",
       selectedPerson: "",
@@ -31,14 +31,19 @@
   };
 
   const el = {
-    addButton: document.querySelector(".header__add"),
-    backButton: document.querySelector(".header__back"),
+    dialog: document.querySelector(".dialog"),
+    dialogCloseButton: document.querySelector(".dialog__close-button"),
+    dialogConfirmInputButton: document.querySelector(".dialog__confirm-input-button"),
+    dialogInput: document.querySelector(".dialog__input"),
+    dialogTitle: document.querySelector(".dialog__title"),
+    headerAddButton: document.querySelector(".header__add"),
+    headerBackButton: document.querySelector(".header__back"),
     headerTitle: document.querySelector(".header__title"),
-    listContainer: document.querySelector(".list-container"),
+    listContainer: document.querySelector(".list-container")
   };
 
   // Stores "add to homescreen" prompt until user activates it by clicking back
-  let deferredPrompt;
+  let deferredHomescreenPrompt;
 
   /*****************************************************************************
    *
@@ -56,18 +61,9 @@
     el.listContainer.innerHTML = html;
   }
 
-  function renderBackButton() {
-    state.displayBackButton === true
-      ? el.backButton.removeAttribute("hidden")
-      : el.backButton.setAttribute("hidden", "");
-  }
-
-  function renderHeader() {
-    el.headerTitle.textContent = state.page.title;
-  }
-
   function render() {
     renderBackButton();
+    renderDialog();
     renderHeader();
 
     switch (state.page.type) {
@@ -77,16 +73,36 @@
     }
   }
 
-  function renderGroups() {
-    displayItems(Object.keys(data));
-  }
-
-  function renderPeople() {
-    displayItems(Object.keys(data[state.page.selectedGroup]));
+  function renderBackButton() {
+    state.displayBackButton === true
+      ? el.headerBackButton.removeAttribute("hidden")
+      : el.headerBackButton.setAttribute("hidden", "");
   }
 
   function renderDetails() {
     displayItems(data[state.page.selectedGroup][state.page.selectedPerson]);
+  }
+
+  function renderDialog() {
+    if (state.displayDialog === true) {
+      el.dialogInput.value = "";
+      el.dialog.classList.add("dialog--show");
+      el.dialogInput.focus();
+    } else {
+      el.dialog.classList.remove("dialog--show");
+    }
+  }
+
+  function renderGroups() {
+    displayItems(Object.keys(data));
+  }
+
+  function renderHeader() {
+    el.headerTitle.textContent = state.page.title;
+  }
+
+  function renderPeople() {
+    displayItems(Object.keys(data[state.page.selectedGroup]));
   }
 
   /*****************************************************************************
@@ -95,19 +111,15 @@
    *
    ****************************************************************************/
 
-  const handleAddClick = () => {
-    const info = prompt("Enter a new " + state.page.type);
-    if (info === null || info === "") {
-      return;
-    }
-
-    addItem(info);
+  function confirmInput(_) {
+    addItem(el.dialogInput.value);
+    pageBack();
   }
 
-  const handleBackClick = (_) => window.history.back();
-  const handleItemClick = (e) => {
-    // Bubbling tradeoff: extra conditional statement vs listeners on every li 
-    // plus extra buttons alongside additional handler functions
+  function handleItemClick(e) {
+    /* Bubbling tradeoff: choose one extra conditional statement vs listeners on
+     * every li
+     */
     if (e.target.className.includes("item__remove")) {
       removeItem(e.target.previousSibling.textContent);
       return;
@@ -126,40 +138,73 @@
     render();
   }
 
-  // Experimental
-  function handleHomescreenPrompt(event) {
-    if (!deferredPrompt) { return; }
+  function inputOnEnterKey(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) { confirmInput(); }
+  }
 
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(choiceResult => {
+  function openDialog(_) {
+    state.displayDialog = true;
+    setDialogTitle();
+
+    /* Allow user to press back button to escape dialog and remain on same page.
+     * Note that when dialog is closed, state is popped (rather than pushed) so 
+     * as to not affect normal page navigation.
+     */
+    window.history.pushState(state, null, "");
+    render();
+  }
+
+  // Experimental
+  function openHomescreenPrompt(event) {
+    if (!deferredHomescreenPrompt) { return; }
+
+    deferredHomescreenPrompt.prompt();
+    deferredHomescreenPrompt.userChoice.then(choiceResult => {
+      // TODO: notify user upon outcome
       choiceResult.outcome === 'dismissed'
         ? console.log('User cancelled home screen install')
         : console.log('User added to home screen');
 
       // We no longer need the prompt
-      deferredPrompt = null;
+      deferredHomescreenPrompt = null;
     });
   }
 
-  el.addButton.addEventListener("click", handleAddClick);
-  el.backButton.addEventListener("click", handleBackClick);
-  el.backButton.addEventListener("click", handleHomescreenPrompt);
+  function pageBack(_) {
+    window.history.back();
+  }
+
+  function setDialogTitle() {
+    el.dialogTitle.textContent = `Add a ${state.page.type} to ${state.page.title}`;
+  }
+
+  el.dialogCloseButton.addEventListener("click", pageBack);
+  el.dialogConfirmInputButton.addEventListener("click", confirmInput);
+  el.dialogInput.addEventListener("keyup", inputOnEnterKey);
+  el.headerAddButton.addEventListener("click", openDialog);
+  el.headerBackButton.addEventListener("click", pageBack);
+  el.headerBackButton.addEventListener("click", openHomescreenPrompt);
   el.listContainer.addEventListener("click", handleItemClick);
 
-  // Restores previous state when user backs through History API
-  window.onpopstate = function (event) {
-    if (event.state) { state = event.state; }
-    render();
-  };
-
   // Experimental. Should trigger on mobile to store Add to Homescreen prompt.
-  window.onbeforeinstallprompt = function (event) {
-    console.log('beforeinstallprompt Event fired');
+  window.onbeforeinstallprompt = (event) => {
     event.preventDefault();
 
     // Stash the event so it can be triggered later.
-    deferredPrompt = event;
+    deferredHomescreenPrompt = event;
     return false;
+  };
+
+  // Allow user to exit dialog by clicking background while it's active
+  window.onclick = (event) => {
+    if (event.target === el.dialog) { pageBack(); }
+  };
+
+  // Restores previous state when user backs through History API
+  window.onpopstate = (event) => {
+    if (event.state) { state = event.state; }
+    render();
   };
 
   /*****************************************************************************
@@ -169,6 +214,8 @@
    ****************************************************************************/
 
   function addItem(inputText = "") {
+    if (inputText === "") { return; }
+
     switch (state.page.type) {
       case GROUP: addGroup(inputText); break;
       case PERSON: addPerson(inputText); break;
