@@ -9,7 +9,6 @@
 * {
   box-sizing: border-box;
   font-family: "proxima-nova", Arial, Helvetica, sans-serif;
-  font-size: 16px;
   margin: 0;
   padding: 0;
   word-break: break-word;
@@ -131,5 +130,6 @@ input:focus {
   margin-right: var(--right-margin);
 }
 .item__text {
+  font-size: 1.2em;
   margin: 1.2em;
 }
