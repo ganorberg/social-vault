@@ -357,7 +357,7 @@
     window.addEventListener('load', () => {
       // If a service worker already exists at this URL, this call is ignored
       navigator.serviceWorker
-        .register('/social-vault/service-worker.js')
+        .register('/service-worker.js')
         .then(() => console.log('[ServiceWorker] Registered'));
     });
   }
