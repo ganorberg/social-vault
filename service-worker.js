@@ -1,11 +1,13 @@
 const VERSION = 1;
 const CACHE_NAME = `Social-Vault-v${VERSION}`;
-const temporaryGithubPath = "/social-vault";
+
+// Include both / and /index.html because server may request in either format
 const filesToCache = [
-  temporaryGithubPath + '/',
-  temporaryGithubPath + '/app.js',
-  temporaryGithubPath + '/style.css',
-  temporaryGithubPath + '/favicon.ico'
+  '/',
+  '/app.js',
+  '/favicon.ico',
+  '/index.html',
+  '/style.css'
 ];
 
 /* 
@@ -53,8 +55,8 @@ self.addEventListener('fetch', (event) => {
               cache.put(event.request, response.clone());
               return response;
             })
-          // Could use caches.match to show file we know is in cache from install.
-          // TODO: notify user to try again later.  
+            // Could use caches.match to show file we know is in cache from install.
+            // TODO: notify user to try again later.
           ).catch(() => console.error("Cache and network failed."))
       )
   );

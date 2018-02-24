@@ -18,7 +18,6 @@
     "single page application",
     "social memory",
     "social network",
-    "social remember",
     "social storage",
     "SPA",
     "remember names",
@@ -29,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/ganorberg/social-vault/issues"
   },
-  "homepage": "https://ganorberg.github.io/social-vault/",
+  "homepage": "https://socialvault.netlify.com/",
   "devDependencies": {
     "express": "^4.16.2",
     "serve-favicon": "^2.4.5"

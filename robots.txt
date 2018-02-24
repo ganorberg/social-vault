@@ -1,4 +1,4 @@
-# robots.txt for https://ganorberg.github.io/social-vault/
+# robots.txt for https://socialvault.netlify.com/
 
 # Allow crawling of all content
 User-agent: *
