@@ -34,17 +34,18 @@
 <body>
   <header class="header">
     <button class="header__back icon" aria-label="Back Button" hidden>&#8592;</button>
-    <!-- h1 is populated dynamically from app.js based on current page -->
+    <!-- Header title is populated dynamically from app.js based on current page -->
     <h1 class="header__title"></h1>
     <button class="header__add icon modal-trigger" aria-label="Add Button">+</button>
   </header>
 
-  <!-- ul is populated dynamically from app.js with groups, people, or details -->
+  <!-- List is populated dynamically from app.js with groups, people, or details -->
   <ul class="list-container"></ul>
 
   <aside class="dialog">
     <div class="dialog__content">
-      <h1 class="dialog__title">Enter information</h1>
+      <!-- Dialog title is populated dynamically from app.js -->
+      <h1 class="dialog__title"></h1>
       <input type="text" name="add" class="dialog__input"></input>
       <div class="dialog__buttons">
         <button class="dialog__close-button">CANCEL</button>
