@@ -196,7 +196,7 @@
     return false;
   };
 
-  // Allow user to exit dialog by clicking background while it's active
+  // Allow user to exit dialog by clicking background while dialog is active
   window.onclick = (event) => {
     if (event.target === el.dialog) { pageBack(); }
   };
