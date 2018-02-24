@@ -9,7 +9,7 @@ Use this app to remember acquaintances (names, aspirations, hobbies, and so on) 
 Planning and pretty pictures: https://docs.google.com/document/d/1KPhkx54ixJjvgGrxv5iiGGpRitm2Qa2pwWfh_alV58g/edit?usp=sharing
 
 ## For the technically savvy
-This responsive mobile-first single-page progressive web app achieves a 99.8% Lighthouse score (see below). It offers offline functionality, add to homescreen, and completely dynamic content generation, routing and history tracking with vanilla JavaScript, HTML and CSS (no dependencies). Continuously deployed through Netlify.
+Responsive mobile-first single-page progressive web app with 99.8% Lighthouse score (see below). Offline functionality, add to homescreen, and completely dynamic content generation, routing and history tracking with vanilla JavaScript, HTML and CSS (no dependencies). Continuously deployed through Netlify.
 
 ## Lighthouse scoring
 <p align="center">
