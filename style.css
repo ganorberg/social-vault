@@ -136,3 +136,12 @@ input:focus {
   font-size: 1.2rem;
   margin: 1.2em;
 }
+
+/* This avoids transitions on page load and then is immediately removed */
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
