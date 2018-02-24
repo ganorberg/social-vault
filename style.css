@@ -49,26 +49,26 @@ input:focus {
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
-.dialog__buttons {
-  float: right;
-}
-.dialog__close-button {
-  color: var(--bright-blue);
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 0.8em;
-}
-.dialog__close-button:hover {
-  background-color: var(--light-gray);
-}
-.dialog__confirm-input-button {
+.dialog__add {
   color: var(--bright-blue);
   cursor: pointer;
   font-size: 1rem;
   margin-right: -0.8em;
   padding: 0.8em;
 }
-.dialog__confirm-input-button:hover {
+.dialog__add:hover {
+  background-color: var(--light-gray);
+}
+.dialog__buttons {
+  float: right;
+}
+.dialog__cancel {
+  color: var(--bright-blue);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.8em;
+}
+.dialog__cancel:hover {
   background-color: var(--light-gray);
 }
 .dialog__content {
@@ -77,9 +77,9 @@ input:focus {
   left: 50%;
   position: absolute;
   padding: 1rem 1.5rem;
-  top: 20%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  width: 24rem;
+  width: 20rem;
 }
 .dialog__input {
   border-color: var(--light-gray);
@@ -90,7 +90,7 @@ input:focus {
   width: 100%;
 }
 .dialog__title {
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 0.5em;
 }
 .dialog--show {

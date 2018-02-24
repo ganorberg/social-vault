@@ -32,12 +32,12 @@
 
   const el = {
     dialog: document.querySelector(".dialog"),
-    dialogCloseButton: document.querySelector(".dialog__close-button"),
-    dialogConfirmInputButton: document.querySelector(".dialog__confirm-input-button"),
+    dialogAdd: document.querySelector(".dialog__add"),
+    dialogCancel: document.querySelector(".dialog__cancel"),
     dialogInput: document.querySelector(".dialog__input"),
     dialogTitle: document.querySelector(".dialog__title"),
-    headerAddButton: document.querySelector(".header__add"),
-    headerBackButton: document.querySelector(".header__back"),
+    headerAdd: document.querySelector(".header__add"),
+    headerBack: document.querySelector(".header__back"),
     headerTitle: document.querySelector(".header__title"),
     listContainer: document.querySelector(".list-container")
   };
@@ -75,8 +75,8 @@
 
   function renderBackButton() {
     state.displayBackButton === true
-      ? el.headerBackButton.removeAttribute("hidden")
-      : el.headerBackButton.setAttribute("hidden", "");
+      ? el.headerBack.removeAttribute("hidden")
+      : el.headerBack.setAttribute("hidden", "");
   }
 
   function renderDetails() {
@@ -179,12 +179,12 @@
     el.dialogTitle.textContent = `Add a ${state.page.type} to ${state.page.title}`;
   }
 
-  el.dialogCloseButton.addEventListener("click", pageBack);
-  el.dialogConfirmInputButton.addEventListener("click", confirmInput);
+  el.dialogAdd.addEventListener("click", confirmInput);
+  el.dialogCancel.addEventListener("click", pageBack);
   el.dialogInput.addEventListener("keyup", inputOnEnterKey);
-  el.headerAddButton.addEventListener("click", openDialog);
-  el.headerBackButton.addEventListener("click", pageBack);
-  el.headerBackButton.addEventListener("click", openHomescreenPrompt);
+  el.headerAdd.addEventListener("click", openDialog);
+  el.headerBack.addEventListener("click", pageBack);
+  el.headerBack.addEventListener("click", openHomescreenPrompt);
   el.listContainer.addEventListener("click", handleItemClick);
 
   // Experimental. Should trigger on mobile to store Add to Homescreen prompt.
