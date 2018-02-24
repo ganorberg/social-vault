@@ -2,7 +2,7 @@
   "lang": "en-US",
   "name": "Social Vault",
   "short_name": "SocialVault",
-  "start_url": "/social-vault/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#0095FF",
   "theme_color": "#0095FF",
