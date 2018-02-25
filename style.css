@@ -44,6 +44,8 @@ input:focus {
   opacity: 0;
   position: fixed;
   top: 0;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
   visibility: hidden;
   width: 100%;
 }
@@ -75,7 +77,6 @@ input:focus {
   margin: 100px auto 0;
   overflow: auto;
   padding: 1rem 1.5rem;
-  position: relative;
   width: 20rem;
 }
 .dialog__input {
@@ -92,6 +93,7 @@ input:focus {
 }
 .dialog--show {
   opacity: 1;
+  transform: scale(1.0);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   visibility: visible;
 }
