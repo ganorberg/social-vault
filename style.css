@@ -76,7 +76,7 @@ input:focus {
   border-radius: 0.5rem;
   left: 50%;
   padding: 1rem 1.5rem;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 20rem;
