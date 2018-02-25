@@ -128,7 +128,7 @@ window.onload = () => document.querySelector("body").classList.remove("preload")
       return;
     }
 
-    // Grab text from li only, thereby excluding button text
+    // Grab text from li only, thereby excluding text from remove button
     const itemText = e.target.firstChild.textContent;
 
     switch (state.page.type) {
