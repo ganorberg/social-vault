@@ -72,11 +72,10 @@ input:focus {
 .dialog__content {
   background-color: var(--white);
   border-radius: 0.5rem;
-  left: 50%;
+  margin: 100px auto 0;
+  overflow: auto;
   padding: 1rem 1.5rem;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 20rem;
 }
 .dialog__input {
