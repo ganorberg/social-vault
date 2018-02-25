@@ -72,7 +72,7 @@ input:focus {
   background-color: var(--light-gray);
 }
 .dialog__content {
-  background-color: white;
+  background-color: var(--white);
   border-radius: 0.5rem;
   left: 50%;
   padding: 1rem 1.5rem;
@@ -129,7 +129,7 @@ input:focus {
 }
 
 .item__remove {
-  color: #E2DFDF;
+  color: var(--light-gray);
   margin-right: var(--right-margin);
 }
 .item__text {
