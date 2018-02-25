@@ -164,7 +164,7 @@ window.onload = () => document.querySelector("body").classList.remove("preload")
 
     deferredHomescreenPrompt.prompt();
     deferredHomescreenPrompt.userChoice.then(choiceResult => {
-      // TODO: notify user upon outcome
+      // TODO: notify user that they can always add to homescreen from settings
       choiceResult.outcome === 'dismissed'
         ? console.log('User cancelled home screen install')
         : console.log('User added to home screen');
