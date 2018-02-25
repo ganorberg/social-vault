@@ -121,8 +121,8 @@ window.onload = () => document.querySelector("body").classList.remove("preload")
 
   function handleItemClick(e) {
     /* Bubbling tradeoff: choose one extra conditional statement vs listeners on
-      * every li
-      */
+     * every li
+     */
     if (e.target.className.includes("item__remove")) {
       removeItem(e.target.previousSibling.textContent);
       return;
@@ -151,9 +151,9 @@ window.onload = () => document.querySelector("body").classList.remove("preload")
     setDialogTitle();
 
     /* Allow user to press back button to escape dialog and remain on same page.
-      * Note that when dialog is closed, state is popped (rather than pushed) so 
-      * as to not affect normal page navigation.
-      */
+     * Note that when dialog is closed, state is popped (rather than pushed) so 
+     * as to not affect normal page navigation.
+     */
     window.history.pushState(state, null, "");
     render();
   }
