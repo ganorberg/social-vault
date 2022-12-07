@@ -30,7 +30,7 @@
   },
   "homepage": "https://socialvault.netlify.com/",
   "devDependencies": {
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "serve-favicon": "^2.4.5"
   }
 }
